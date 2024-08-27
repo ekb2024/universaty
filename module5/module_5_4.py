@@ -2,7 +2,7 @@ class House:
     houses_history = []
     __new_self = None
     def __new__(cls, *args, **kwargs):
-        cls.houses_history += args
+        cls.houses_history.append(args[0])
         __new_self = super().__new__(cls)
         return __new_self
     def __init__(self,name,number_of_floors):
