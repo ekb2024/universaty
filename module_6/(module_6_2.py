@@ -14,7 +14,7 @@ class Vehicle:
         return f'Цвет:{self._color}'
     def set_color(self, new_color):
         if new_color.lower() in self._COLOR_VARIANTS:
-            self._color = "\033[32m{}".format(new_color)
+            self._color = "\033[32m{}".format(new_color.upper())
 
         else:
          print("\033[31m{}".format(f'Нельзя сменить цвет на {new_color}'),"\033[0m")
