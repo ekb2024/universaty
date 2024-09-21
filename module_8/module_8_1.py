@@ -7,7 +7,7 @@ def add_everything_up(a, b):
             if not isinstance(i, str):
                 summ += str(i)
             else:
-                summ += str(i)
+                summ += i
         return summ
 
 
