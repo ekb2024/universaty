@@ -2,7 +2,7 @@ def all_variants(text):
   for n in range(1,len(text)+1):
     for i in range(len(text)):
          yield text[i:i+n]
-         if i+n ==  len(text):
+         if i+n == len(text):
              break
 
 a = all_variants("abcdefghijklmnopqrstuvwxyz")
