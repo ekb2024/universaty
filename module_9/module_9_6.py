@@ -1,8 +1,10 @@
 def all_variants(text):
-   for n in range(len(text)):
-      for i in range(round(len(text)/(n+1))):
-         yield text[i:i+n+1]
+  for n in range(1,len(text)+1):
+    for i in range(len(text)):
+         yield text[i:i+n]
+         if i+n ==  len(text):
+             break
 
-a = all_variants("abc")
+a = all_variants("12356789")
 for i in a:
   print(i)
