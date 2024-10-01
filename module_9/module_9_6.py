@@ -5,6 +5,6 @@ def all_variants(text):
          if i+n ==  len(text):
              break
 
-a = all_variants("12356789")
+a = all_variants("abcdefghijklmnopqrstuvwxyz")
 for i in a:
   print(i)
