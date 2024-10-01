@@ -8,3 +8,17 @@ def all_variants(text):
 a = all_variants("abcdefghijklmnopqrstuvwxyz")
 for i in a:
   print(i)
+
+### или так 
+'''
+def all_variants(text):
+  for n in range(1,len(text)+1):
+      i = 0
+      while i+n <= len(text):
+         yield text[i:i+n]
+         i += 1
+
+a = all_variants("abcdefghijklmnopqrstuvwxyz")
+for i in a:
+  print(i)
+'''
