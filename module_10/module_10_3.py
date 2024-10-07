@@ -6,7 +6,6 @@ class Bank:
     def __init__(self):
         self.balance = 0
         self.lock = Lock()
-
         super().__init__()
     def deposit(self):
            random_ = 0
@@ -17,8 +16,6 @@ class Bank:
                 sleep(0.001)
                 if self.balance >= 500 and self.lock.locked() == True:
                   self.lock.release()
-
-
     def take(self):
         for i in range(100):
             random_ = randint(50, 500)
@@ -30,8 +27,6 @@ class Bank:
             else:
                 print('Запрос отклонён, недостаточно средств')
                 self.lock.acquire()
-
-
 
 bk = Bank()
 th1 = Thread(target=Bank.deposit, args=(bk,))
