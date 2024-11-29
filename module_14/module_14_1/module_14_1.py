@@ -2,14 +2,7 @@ import sqlite3
 
 connection = sqlite3.connect('not_telegram.db')
 cursor = connection.cursor()
-
-cursor.execute(f'SELECT name FROM sqlite_master WHERE type="table" AND name="Users"')
-result = cursor.fetchone()
-
-if result is not None:
-        print("если таблица Users существует... удалим ")
-        cursor.execute(f'DROP TABLE Users')
-
+cursor.execute(f' DROP TABLE IF  EXISTS Users')
 cursor.execute('''CREATE TABLE IF NOT EXISTS Users (
                  id INTEGER PRIMARY KEY,
                  username TEXT NOT NULL,
@@ -25,9 +18,8 @@ for i in range(1,11):
   cursor.execute('INSERT INTO Users (username, email, age, balance) VALUES (?, ?, ?, ? )',
                (User, example, age, 1000))
 
-
-cursor.execute('UPDATE Users SET balance = ? WHERE id % 2 != ?', (500, 0))
-cursor.execute('DELETE FROM Users WHERE id in (?,?,?,?)', (1,4,7,10))
+for i in range(1,11,3):
+     cursor.execute(f'DELETE FROM Users WHERE id = {i}')
 
 cursor.execute('SELECT username,email,balance,age FROM Users WHERE age != 60')
 table = cursor.fetchall()
