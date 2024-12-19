@@ -20,4 +20,7 @@ async def update_user(user_id: int=Path(ge=1, le=int(max(users, key=int)), descr
      users[str(user_id)] =  f'Имя: {username} ,возраст: {age}'
      return f'The user {str(user_id)} is updated'
 
-
+@app.delete('/user/{user_id}')
+async def delete_user(user_id: int=Path(ge=1, le=int(max(users, key=int)))) ->str:
+     users.pop(str(user_id))
+     return f"User {str(user_id)} has been deleted"
