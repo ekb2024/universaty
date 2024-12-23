@@ -22,21 +22,29 @@ async  def get_message(request: Request, user_id:int ) ->HTMLResponse:
 
 @app.post('/user/{username}/{age}')
 async  def append_user(username,age) ->List:
-     users.append(User(id=len(users) + 1, username=username, age=age))
+     users.append(User(id = (max((id_user.id for id_user in users), default=0) + 1), username=username, age=age))
      return users
 @app.put('/user/{user_id}/{username}/{age}')
 async def update_user( user_id:int,username:str,age:int) ->List:
                try:
-                    valid_user = users[user_id -1]
-                    users[user_id - 1] = User(id=user_id, username=username, age=age)
-                    return valid_user
+                    for u in range(len(users)):
+                        if users[u].id == user_id:
+                           users[u] = User(id=user_id, username=username, age=age)
+                           valid = users[u]
+                           break
+                    return valid
                except IndexError:
                     raise HTTPException(status_code=404, detail="User was not found")
 @app.delete("/user/{user_id}")
 def delete_user(user_id:int) ->List:
     try:
-        valid_user = users[user_id - 1]
-        users.pop(user_id - 1)
-        return valid_user
+        valid_user = users[user_id ]
+        for u in range(len(users)):
+            if users[u].id == user_id:
+                valid = users[u]
+                users.pop(u)
+                break
+
+        return valid
     except IndexError:
         raise HTTPException(status_code=404, detail="User was not found")
