@@ -12,9 +12,9 @@ users =[]
 
 
 class User(BaseModel):
-    id: int = Field(ge=1, le=100, description="Enter User ID")
-    username: str = Field(min_length=5, max_length=20, description="Название продукта должно быть от 5 до 20 символов")
-    age: int = Field(ge=18, le=100, description="возраст должен быть от 18 до 100")
+    id: int = None
+    username: str
+    age: int
 
 
 @app.get("/")
