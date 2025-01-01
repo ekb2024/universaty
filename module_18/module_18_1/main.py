@@ -15,5 +15,6 @@ if __name__ == '__main__':
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 #django-admin startproject UrbanDjango
+#cd UrbanDjango
 #python manage.py runserver
 #python manage.py startapp exemple1
